@@ -1,0 +1,25 @@
+- tải ubuntu (hiện e setup ở 20.4)
+- install docker
+- install tmux
+- install docker-compose
+    + sudo apt-get update
+    + sudo apt-get install docker-compose 
+- cài jdk 1.8
+    + sudo apt-get update
+    + sudo apt-get install openjdk-8-jdk
+- set java home
+    + export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    + export PATH=$JAVA_HOME/bin:$PATH
+- comment dòng 101 -> 103 trong file setup.sh
+-Note:
+    + nếu lần đầu chạy ./setup.sh lỗi permission denied
+        + chmod +x setup.sh
+        + chmod +x gradlew
+    + nếu gặp lỗi permission denied while trying to connect to the Docker daemon socket
+        + sudo usermod -aG docker $USER
+        + newgrp docker
+    + nếu gặp lỗi permission denied dài
+        + sudo rm -rf crypto-config/peerOrganizations/ACVP
+        + sudo rm -rf crypto-config/ordererOrganizations/orderer.acvp.com
+        + sudo rm -rf crypto-config/peerOrganizations
+        + sudo rm -rf crypto-config/ordererOrganizations
