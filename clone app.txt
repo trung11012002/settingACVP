@@ -23,3 +23,32 @@
         + sudo rm -rf crypto-config/ordererOrganizations/orderer.acvp.com
         + sudo rm -rf crypto-config/peerOrganizations
         + sudo rm -rf crypto-config/ordererOrganizations
+
+
+
+
+//v2
+* Require
+  - JDK 1.8
+  - Ubuntu
+  - Docker
+  - PostgreSQL
+  - In the gradle.properties file add crytoblk.gitlab.com.token
+  - Comment lines 101->103 in setup.sh file
+  - Comment lines"include 'acvp-ledger-migration'" in settings.gradle file 
+  - In the root folder containing the project open terminal
+    + Step 1: Run chmod +x setup.sh and chmod +x gradlew
+    + Step 2: Run sudo usermod -aG docker $USER and newgrp docker
+    + Step 3: Run ./setup.sh
+    + Step 4: Create database acvp in local
+    + Step 5: run ./run-webservers.sh
+* Note
+  - When encountering errors related to permission can not remove, run the commands
+    + sudo rm -rf crypto-config/peerOrganizations/ACVP
+    + sudo rm -rf crypto-config/ordererOrganizations/orderer.acvp.com
+    + sudo rm -rf crypto-config/peerOrganizations
+    + sudo rm -rf crypto-config/ordererOrganizations
+  - If you encounter permission errors for 2 files priv_sk, channel--acvp-global.tx, run these 2 commands
+    + sudo chmod 644 crypto-config/peerOrganizations/ACVP/users/Admin@ACVP/msp/keystore/priv_sk
+    + sudo chmod 644 channel-artifacts/channel--acvp-global.tx
+
